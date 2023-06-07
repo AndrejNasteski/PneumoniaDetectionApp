@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<head>
+  <title>{% block title %}Preview{% endblock %}</title>
+  <meta charset="utf-8">   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+{% endblock %}
+
+{% block content %}
+
+
+<body>
+
+
+
+<div>
+  <div style="margin: 10px;" class="center-flex-buttons">
+    <a href="{{ url_for('classify') }}"><input class="button button1" type="submit" value="Classify"/></a>
+    <a href="{{ url_for('discard') }}"><input class="button buttonRed" type="submit" value="Discard"/></a>
+  </div>
+  {% if session['prediction'] %}
+  <div>
+    <p>Image classified as {{ session['prediction' ]}}</p>
+    <p>Is this image classified correctly?</p>
+    <div class="center-flex-buttons">
+      <a href="{{ url_for('update_label_correct') }}"><input class="button buttonGreen" type="submit" name="Correct_Button" value="Correct Classification"/></a>
+      <a href="{{ url_for('update_label_incorrect') }}"><input class="button buttonRed" type="submit" name="Incorrect_Button" value="Incorrect Classification"/></a>
+    </div>
+    <div class="center-flex-buttons" >
+      <a href="{{ url_for('upload') }}"><input class="button button1" type="submit"  style="left: 50%;" name="Upload" value="Upload Another Image"/></a>
+    <div>
+  </div>
+</div>
+{% endif %}
+
+<div class="center-flex-buttons">
+  <img src='{{ response }}' class="image" style="position: absolute; top: 270px; align-content: center;">
+</div>
+{% endblock %}
+</body>

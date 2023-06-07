@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<head>
+  <title>{% block title %}Upload{% endblock %}</title>
+  <meta charset="utf-8">   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+{% endblock %}
+
+{% block content %}
+<body>
+<div class="container" style="border: 0px;">
+  <form enctype="multipart/form-data" method="post" class="center-flex" action="{{url_for('upload')}}" >
+    <div class="button" style="Width: 300px">
+      <input type="file" name="file">
+    </div>
+    <div>
+      <input class="button button1" type="submit" value="Upload Image" style="Width: 200px"/>
+    </div>
+    {% if g.user['admin'] %}
+    <div class="center-flex-buttons">
+      <a href="{{ url_for('retrain') }}"><input class="button button1 " type="button" name="Retrain" value="Retrain Model" style="Width: 200px"/></a>
+    </div>
+    {% endif %}
+  </form>
+  
+</div>
+</body>
+{% endblock %}
+
+

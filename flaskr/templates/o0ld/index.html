@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Index{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div style="background: red; width: 50%; margin: auto; display: flex; justify-content: center;">
+    <form enctype="multipart/form-data" method="post" action="{{url_for('preview.upload')}}"  style="background: gray">
+
+       <input type="file" id="file" name="file" accept="image/*" 
+       style="margin:5px; padding:5px; outline: dashed 1px black;">
+       <div>
+           <input type="submit" value="Upload Image" style=" width:100px; margin:5px; left: 50%; position: relative;">
+           
+       </div>
+       <div>
+           <input type="button" value="Retrain Model" style=" width:100px; margin:5px; left: 50%; position: relative;">
+       </div>
+
+   </form> 
+</div>
+{% endblock %}

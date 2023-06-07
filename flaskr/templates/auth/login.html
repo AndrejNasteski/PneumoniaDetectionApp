@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block header %}
+<title>{% block title %}Log In{% endblock %}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 style="color: white;">Log In</h1>
+  <p>Don't have an account? <a href="{{ url_for('auth.register') }}" style="color: var(--blue-white);">Register here.</a> </p>
+  <form method="post">
+    <label for="username">Username</label>
+    <input name="username" id="username" required class="input_">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required class="input_">
+    <div class="center-flex-buttons">
+      <input type="submit" value="Log In" class="button button1">
+    </div>
+  </form>
+</div>
+{% endblock %}
